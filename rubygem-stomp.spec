@@ -63,3 +63,23 @@ rm -rf %{buildroot}
 %doc %{ruby_gemdir}/doc/%{rbname}-%{version}
 %dir %{ruby_gemdir}/gems/%{rbname}-%{version}/examples
 %{ruby_gemdir}/gems/%{rbname}-%{version}/examples/*.rb
+
+
+%changelog
+* Thu Mar 10 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.1.7-1
++ Revision: 643338
+- new release: 1.1.7
+- rename
+- regenerate spec with gem2rpm5
+
+* Tue Dec 07 2010 Oden Eriksson <oeriksson@mandriva.com> 1.1-2mdv2011.0
++ Revision: 614767
+- the mass rebuild of 2010.1 packages
+
+* Mon Feb 01 2010 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.1-1mdv2010.1
++ Revision: 499315
+- import ruby-stomp
+
+
+* Mon Feb  1 2010 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.1-1
+- initial release
