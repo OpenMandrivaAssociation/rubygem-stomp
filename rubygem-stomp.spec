@@ -1,85 +1,42 @@
-# Generated from stomp-1.1.7.gem by gem2rpm5 -*- rpm-spec -*-          
-%define	rbname	stomp
+%define	oname	stomp
 
 Summary:	Ruby client for the Stomp messaging protocol
-Name:		rubygem-%{rbname}
-
+Name:		rubygem-%{oname}
 Version:	1.1.7
-Release:	1
-Group:		Development/Ruby
+Release:	3
 License:	Apache License
-URL:		http://stomp.codehaus.org/
-Source0:	http://rubygems.org/gems/%{rbname}-%{version}.gem
-BuildRequires:	rubygems 
+Group:		Development/Ruby
+URL:		http://%{oname}.rubyforge.org/
+Source0:	http://gems.rubyforge.org/gems/%{oname}-%{version}.gem
+BuildRequires:	ruby-RubyGems
+Requires:	ruby
 BuildArch:	noarch
-%rename		ruby-stomp
+%rename ruby-%{oname}
 
 %description
-Ruby client for the Stomp messaging protocol
-
-%package	doc
-Summary:	Documentation for %{name}
-Group:		Books/Computer books
-Requires:	%{name} = %{EVRD}
-
-%description	doc
-Documents, RDoc & RI documentation for %{name}.
+The Stomp project is the Streaming Text Orientated Messaging Protocol site
+(or the Protocol Briefly Known as TTMP and Represented by the symbol :ttmp).
+Stomp provides an interoperable wire format so that any of the available
+Stomp Clients can communicate with any Stomp Message Broker to provide easy
+and widespread messaging interop among languages, platforms and brokers.
 
 %prep
-%setup -q
 
 %build
-%gem_build -f '(examples|spec|test)/'
 
 %install
-rm -rf %{buildroot}
-%gem_install
+gem install --install-dir %{buildroot}/%{ruby_gemdir} --force %{SOURCE0}
+
+mv %{buildroot}%{ruby_gemdir}/bin %{buildroot}%{_prefix}
 
 %clean
-rm -rf %{buildroot}
 
 %files
-%{_bindir}/catstomp
-%{_bindir}/stompcat
-%dir %{ruby_gemdir}/gems/%{rbname}-%{version}
-%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/bin
-%{ruby_gemdir}/gems/%{rbname}-%{version}/bin/catstomp
-%{ruby_gemdir}/gems/%{rbname}-%{version}/bin/stompcat
-%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/lib
-%{ruby_gemdir}/gems/%{rbname}-%{version}/lib/*.rb
-%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/lib/stomp
-%{ruby_gemdir}/gems/%{rbname}-%{version}/lib/stomp/*.rb
-%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/lib/stomp/ext
-%{ruby_gemdir}/gems/%{rbname}-%{version}/lib/stomp/ext/*.rb
-%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/spec
-%{ruby_gemdir}/gems/%{rbname}-%{version}/spec/*.rb
-%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/test
-%{ruby_gemdir}/gems/%{rbname}-%{version}/test/*.rb
-%{ruby_gemdir}/specifications/%{rbname}-%{version}.gemspec
-
-%files doc
-%doc %{ruby_gemdir}/gems/%{rbname}-%{version}/*.rdoc
-%doc %{ruby_gemdir}/gems/%{rbname}-%{version}/LICENSE
-%doc %{ruby_gemdir}/doc/%{rbname}-%{version}
-%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/examples
-%{ruby_gemdir}/gems/%{rbname}-%{version}/examples/*.rb
+%doc %{ruby_gemdir}/doc/%{oname}-%{version}
+%{_bindir}/*
+%{ruby_gemdir}/cache/%{oname}-%{version}.gem
+%{ruby_gemdir}/gems/%{oname}-%{version}
+%{ruby_gemdir}/specifications/%{oname}-%{version}.gemspec
 
 
-%changelog
-* Thu Mar 10 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.1.7-1
-+ Revision: 643338
-- new release: 1.1.7
-- rename
-- regenerate spec with gem2rpm5
 
-* Tue Dec 07 2010 Oden Eriksson <oeriksson@mandriva.com> 1.1-2mdv2011.0
-+ Revision: 614767
-- the mass rebuild of 2010.1 packages
-
-* Mon Feb 01 2010 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.1-1mdv2010.1
-+ Revision: 499315
-- import ruby-stomp
-
-
-* Mon Feb  1 2010 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.1-1
-- initial release
