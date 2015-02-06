@@ -3,7 +3,7 @@
 Summary:	Ruby client for the Stomp messaging protocol
 Name:		rubygem-%{oname}
 Version:	1.1.7
-Release:	3
+Release:	4
 License:	Apache License
 Group:		Development/Ruby
 URL:		http://%{oname}.rubyforge.org/
